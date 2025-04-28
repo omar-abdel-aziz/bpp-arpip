@@ -26,14 +26,6 @@ RUN wget https://cmake.org/files/v3.16/cmake-3.16.3.tar.gz \
  && cd .. \
  && rm -rf cmake-3.16.3 cmake-3.16.3.tar.gz
 
-# # bpp-core
-# RUN git clone https://github.com/BioPP/bpp-core \
-#  && cd bpp-core \
-#  && git checkout tags/v2.4.1 -b v241 \
-#  && mkdir build && cd build \
-#  && cmake .. -DCMAKE_INSTALL_PREFIX=../../.local \
-#  && make install \
-#  && cd ../.. 
 
  # bpp-core
 RUN git clone https://github.com/BioPP/bpp-core \
@@ -83,13 +75,6 @@ RUN git clone -b v0.5.0 https://github.com/google/glog \
  && cmake --build build --target install \
  && cd ..
 
-# # googletest
-# RUN git clone https://github.com/google/googletest.git -b release-1.11.0 \
-#  && cd googletest \
-#  && mkdir build && cd build \
-#  && cmake .. -DCMAKE_INSTALL_PREFIX=../../.local \
-#  && make install \
-#  && cd ../..
 
 # install GoogleTest system‑wide so that -lgtest works
 RUN git clone https://github.com/google/googletest.git -b release-1.11.0 \
@@ -98,16 +83,8 @@ RUN git clone https://github.com/google/googletest.git -b release-1.11.0 \
  && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local \
  && make -j"$(nproc)" install
 
-# # bpp-arpip
-# RUN git clone https://github.com/acg-team/bpp-arpip/ \
-#  && cd bpp-arpip \
-#  && cmake --target ARPIP -- -DCMAKE_BUILD_TYPE=Release-static \
-#       -DCMAKE_INSTALL_PREFIX=../.local \
-#       -DCMAKE_PREFIX_PATH=../.local \
-#       -DCMAKE_EXE_LINKER_FLAGS="-L../.local/lib" CMakeLists.txt \
-#  && make \
-#  && cd ..
-# bpp-arpip, with tests
+
+# bpp-arpip
 RUN git clone https://github.com/acg-team/bpp-arpip/ \
  && cd bpp-arpip \
  && mkdir build && cd build \
