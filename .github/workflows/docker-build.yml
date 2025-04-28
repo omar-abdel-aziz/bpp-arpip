@@ -28,4 +28,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: your-dockerhub-user/bpp-arpip:latest
+          tags: oaziz05/bpp-arpip:latest
